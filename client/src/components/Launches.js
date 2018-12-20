@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-//import LaunchItem from './Launch';
-//import MissionKey from './MissionKey';
+import React, { Component, Fragment } from "react";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+import Loader2 from './loader2'
+import LaunchItem from './LaunchItem';
+import MissionKey from './MissionKey';
 
 const QUERY_LANZAMIENTOS_SPACEX = gql`
   query LaunchesQuery {
@@ -19,26 +20,33 @@ export class Launches extends Component {
   render() {
     return (
       <Fragment>
-        <h1 className="display-4 my-3">Launches</h1>
-        {/* <MissionKey /> */}
+        <h2 className="display-4 my-4 text-center">SpaceX Launches</h2>
+        
         <Query query={QUERY_LANZAMIENTOS_SPACEX}>
           {({ loading, error, data }) => {
-            if (loading) return <h4>Loading...</h4>;
+            if (loading) return <di><Loader2></Loader2><h5 className="text-center">Loading Missions...</h5></di>;
             if (error) console.log(error);
-            console.log("Esto son los lanzamientos",data);
-
-            return (
-              <Fragment>
+            if (data) {
+              console.log("Esto son los lanzamientos", data);
+              return (
+                <Fragment>
+                  <MissionKey />
                   <ul>
-                     {/* data.launches.map(launch => (
-                  <LaunchItem key={launch.flight_number} launch={launch} />
-                )) */
-                    data.lanzamientos.map(launch => <li>{launch.mission_name}</li>)
-                }  
+                    {
+                      data.lanzamientos.map(launch => (
+                      <LaunchItem key={launch.flight_number} launch={launch} />
+                    ))}
                   </ul>
-               
-              </Fragment>
-            );
+                </Fragment>
+              );
+            } else {
+              return (
+                <Fragment>
+                  <u className="h4 text-danger">No Launches Found!</u>
+                  <h5>Check your internet connection or see if GraphQl endpoint is up and running.</h5>
+                </Fragment>
+              );
+            }
           }}
         </Query>
       </Fragment>
