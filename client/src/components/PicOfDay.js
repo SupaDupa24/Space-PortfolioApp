@@ -50,12 +50,12 @@ const PicOfDay = props => {
             } = data.apod;
             return (
               <Fragment>
-                <div class="row">
-                  <div class="col">
-                    <div style={{ width: 500 }} className="card mb-4 shadow-sm">
-                      <div className="card-header">NASA Picture of the Day</div>
-                      <div className="card-body">
-                        <h4 className="card-title">{title}</h4>
+                <div id="APOD" style={{  }} className="card mb-4 shadow-sm">
+                  <div className="card-header"><strong className="text-ligth">NASA Astronomy Picture of the Day</strong></div>
+                  <div className="card-body">
+                    <h4 className="card-title">{title}</h4>
+                    <div className="row">
+                      <div className="col-md">
                         <img
                           className="card-img-top mb-2"
                           src={url}
@@ -72,10 +72,17 @@ const PicOfDay = props => {
                           </strong>{" "}
                           : {date}
                         </p>
+                      </div>{" "}
+                      <div class="col-md">
+                        <h5>
+                          Description
+                        </h5>
+                        <div>
+                          <p className=" text-justify text-muted">{explanation}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col">Column</div>
                 </div>
               </Fragment>
             );
@@ -83,7 +90,10 @@ const PicOfDay = props => {
             return (
               <Fragment>
                 <div className="row">
-                  <div style={{ width: 550 }} className="card mb-4 shadow-sm mx-auto">
+                  <div
+                    style={{ width: 550 }}
+                    className="card mb-4 shadow-sm mx-auto"
+                  >
                     <div className="card-header">NASA Picture of the Day</div>
                     <div className="card-body">
                       <h4 className="card-text">
