@@ -7,6 +7,9 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Launch from './components/Launch'
 import Footer from './components/Footer'
+import SpaceX from './components/SpaceX'
+import Nasa from './components/Nasa'
+
 
 import "./App.css";
 
@@ -22,7 +25,9 @@ class App extends Component {
           <div>
             <Navbar />
             <Route exact path="/" component={Home} />
-            <Route exact path="/launch/:flight_number" component={Launch} />
+            <Route exact path="/spaceX/launch/:flight_number" component={Launch} />
+            <Route exact path="/spaceX/" component={SpaceX} />
+            <Route exact path="/nasa/" component={Nasa} />
             <Footer />
           </div>
         </Router>

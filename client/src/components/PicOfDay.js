@@ -24,17 +24,24 @@ const PicOfDay = props => {
           if (loading)
             return (
               <Fragment>
-                <di className="row d-sm-none d-md-block">
+                <div className="row d-sm-none d-md-block">
                   <div
                     style={{ width: 500 }}
                     className="card mb-4 shadow-sm mx-auto"
                   >
-                    <div className="card-header">NASA Picture of the Day</div>
+                    <div className="card-header text-bold font-weight-bold">
+                      {" "}
+                      NASA <span className="text-success">
+                        {" "}
+                        Astronomy{" "}
+                      </span>{" "}
+                      Picture of the Day
+                    </div>
                     <div className="card-body">
                       <Loader />
                     </div>
                   </div>
-                </di>
+                </div>
               </Fragment>
             );
           if (error) console.log(error);
@@ -48,44 +55,101 @@ const PicOfDay = props => {
               hdurl,
               explanation
             } = data.apod;
-            return (
-              <Fragment>
-                <div id="APOD" style={{  }} className="card mb-4 shadow-sm">
-                  <div className="card-header"><strong className="text-ligth">NASA Astronomy Picture of the Day</strong></div>
-                  <div className="card-body">
-                    <h4 className="card-title">{title}</h4>
-                    <div className="row">
-                      <div className="col-md">
-                        <img
-                          className="card-img-top mb-2"
-                          src={url}
-                          alt={title}
-                        />
-                        <p className="card-text">
-                          <strong>
-                            <i className="fas fa-play" /> Photo by{" "}
-                          </strong>{" "}
-                          : {copyright}
-                          <br />
-                          <strong>
-                            <i className="fas fa-compact-disc" /> Date{" "}
-                          </strong>{" "}
-                          : {date}
-                        </p>
-                      </div>{" "}
-                      <div class="col-md">
-                        <h5>
-                          Description
-                        </h5>
-                        <div>
-                          <p className=" text-justify text-muted">{explanation}</p>
+            if (!url.startsWith("https://www.youtube")) {
+              return (
+                <Fragment>
+                  <div id="APOD" style={{}} className="card mb-4 shadow-sm">
+                    <div className="card-header text-bold font-weight-bold">
+                      {" "}
+                      NASA <span className="text-success">
+                        {" "}
+                        Astronomy{" "}
+                      </span>{" "}
+                      Picture of the Day
+                    </div>
+                    <div className="card-body">
+                      <h4 className="card-title">{title}</h4>
+                      <div className="row">
+                        <div className="col-md">
+                          <img
+                            className="card-img-top mb-2"
+                            src={url}
+                            alt={title}
+                          />
+                          <p className="card-text">
+                            <strong>
+                              <i className="fas fa-play" /> Photo by{" "}
+                            </strong>{" "}
+                            : {copyright}
+                            <br />
+                            <strong>
+                              <i className="fas fa-compact-disc" /> Date{" "}
+                            </strong>{" "}
+                            : {date}
+                          </p>
+                        </div>{" "}
+                        <div className="col-md">
+                          <h5>Description</h5>
+                          <div>
+                            <p className=" text-justify text-muted">
+                              {explanation}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Fragment>
-            );
+                </Fragment>
+              );
+            } else {
+              return (
+                <Fragment>
+                  <div id="APOD" style={{}} className="card mb-4 shadow-sm">
+                    <div className="card-header text-bold font-weight-bold">
+                      {" "}
+                      NASA <span className="text-success">
+                        {" "}
+                        Astronomy{" "}
+                      </span>{" "}
+                      Picture of the Day
+                    </div>
+                    <div className="card-body">
+                      <h4 className="card-title">{title}</h4>
+                      <div className="row">
+                        <div className="col-md">
+                          <div className="embed-responsive embed-responsive-16by9 mb-2">
+                            <iframe
+                              className="embed-responsive-item"
+                              src={url}
+                              allowFullScreen
+                            />
+                          </div>
+                          <p className="card-text">
+                            <strong>
+                              <i className="fas fa-play" /> Photo by{" "}
+                            </strong>{" "}
+                            : {copyright === null ? <span>Not Specified</span>: copyright  }
+                            <br />
+                            <strong>
+                              <i className="fas fa-compact-disc" /> Date{" "}
+                            </strong>{" "}
+                            : {date}
+                          </p>
+                        </div>{" "}
+                        <div className="col-md">
+                          <h5>Description</h5>
+                          <div>
+                            <p className=" text-justify text-muted">
+                              {explanation}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Fragment>
+              );
+            }
           } else {
             return (
               <Fragment>
@@ -94,7 +158,14 @@ const PicOfDay = props => {
                     style={{ width: 550 }}
                     className="card mb-4 shadow-sm mx-auto"
                   >
-                    <div className="card-header">NASA Picture of the Day</div>
+                    <div className="card-header text-bold font-weight-bold">
+                      {" "}
+                      NASA <span className="text-success">
+                        {" "}
+                        Astronomy{" "}
+                      </span>{" "}
+                      Picture of the Day
+                    </div>
                     <div className="card-body">
                       <h4 className="card-text">
                         Whoops! It seems there is no picture for today{" "}

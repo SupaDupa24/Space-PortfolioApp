@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Launches from "./Launches";
 import PicOfDay from "./PicOfDay";
-import Footer from './Footer'
 import Intro from './Intro'
+import SpaceXFeed from "./SpaceXFeed";
 
 export class Home extends Component {
   render() {
@@ -10,7 +10,7 @@ export class Home extends Component {
       <div className="container">
         <Intro></Intro>
         <PicOfDay />
-        <Launches />
+        <SpaceXFeed></SpaceXFeed>
       </div>
     );
   }

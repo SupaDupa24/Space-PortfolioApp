@@ -107,6 +107,22 @@ const RootQuery = new GraphQLObjectType({
             .then(res => res.data)
             .catch(err => console.log("Hubo un error extrayendo la imagen del dia: ", err))
         }
+    },
+    ultimoLanzamiento: {
+      type: LaunchType,
+      resolve(parent, args) {
+        return axios
+          .get(`https://api.spacexdata.com/v3/launches/latest`)
+          .then(res => res.data);
+      }
+    },
+    proximoLanzamiento:{
+      type: LaunchType,
+      resolve(parent, args) {
+        return axios
+          .get(`https://api.spacexdata.com/v3/launches/next`)
+          .then(res => res.data);
+      }
     }
   }
 });

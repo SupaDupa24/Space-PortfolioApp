@@ -24,7 +24,7 @@ export class Launches extends Component {
         
         <Query query={QUERY_LANZAMIENTOS_SPACEX}>
           {({ loading, error, data }) => {
-            if (loading) return <di><Loader2></Loader2><h5 className="text-center">Loading Missions...</h5></di>;
+            if (loading) return <div><Loader2></Loader2><h5 className="text-center">Loading Missions...</h5></div>;
             if (error) console.log(error);
             if (data) {
               console.log("Esto son los lanzamientos", data);
