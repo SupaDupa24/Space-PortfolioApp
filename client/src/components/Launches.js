@@ -20,7 +20,7 @@ export class Launches extends Component {
   render() {
     return (
       <Fragment>
-        <h2 className="display-4 my-4 text-center">SpaceX Launches</h2>
+        <h2 id="Launches" className="display-4 my-4 text-center">SpaceX Launches</h2>
         
         <Query query={QUERY_LANZAMIENTOS_SPACEX}>
           {({ loading, error, data }) => {
@@ -31,12 +31,10 @@ export class Launches extends Component {
               return (
                 <Fragment>
                   <MissionKey />
-                  <ul>
                     {
                       data.lanzamientos.map(launch => (
                       <LaunchItem key={launch.flight_number} launch={launch} />
                     ))}
-                  </ul>
                 </Fragment>
               );
             } else {

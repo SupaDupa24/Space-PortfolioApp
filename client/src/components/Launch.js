@@ -4,7 +4,7 @@ import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import Loading2 from "./loader2";
-import Footer from './Footer'
+
 
 const QUERY_DE_LANZAMIENTO = gql`
   query LaunchQuery($flight_number: Int!) {
@@ -95,7 +95,7 @@ export class Launch extends Component {
             </Query>
           </div>
         </div>
-        <Footer />
+       
       </Fragment>
     );
   }

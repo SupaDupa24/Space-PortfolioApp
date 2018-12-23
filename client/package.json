@@ -10,6 +10,7 @@
     "graphql-tag": "^2.10.0",
     "moment": "^2.23.0",
     "react": "^16.6.3",
+    "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.6.3",
     "react-moment": "^0.8.4",
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mv build ../public",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -31,5 +32,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy":"http://localhost:4000"
 }

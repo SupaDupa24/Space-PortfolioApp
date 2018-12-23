@@ -57,16 +57,35 @@ const ApodType = new GraphQLObjectType({
     })
 })
 
+const EventType = new GraphQLObjectType({
+    name:"EventosHistoricos",
+    fields: () => ({
+      title: {type: GraphQLString},
+      event_date_utc: {type: GraphQLString},
+      flight_number: {type: GraphQLInt},
+      details: {type: GraphQLString},
+      links: {type: LinkType}
+    })
+})
+
+const LinkType = new GraphQLObjectType({
+  name: "ExternalLinks",
+  fields:() => ({
+    article: {type: GraphQLString},
+    wikipedia: {type: GraphQLString}
+  })
+})
+
 // Root Query
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
     lanzamientos: {
       type: new GraphQLList(LaunchType),
-      resolve(parents, args) {
-        return axios
-          .get(`https://api.spacexdata.com/v3/launches`)
-          .then(res => res.data);
+      async resolve(parents, args) {
+        const res = await axios
+          .get(`https://api.spacexdata.com/v3/launches`);
+        return res.data;
       }
     },
     lanzamiento: {
@@ -74,18 +93,18 @@ const RootQuery = new GraphQLObjectType({
       args: {
         flight_number: { type: GraphQLInt }
       },
-      resolve(parent, args) {
-        return axios
-          .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
-          .then(res => res.data);
+      async resolve(parent, args) {
+        const res = await axios
+          .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`);
+        return res.data;
       }
     },
     cohetes: {
       type: new GraphQLList(RocketType),
-      resolve(parent, args) {
-        return axios
-          .get("https://api.spacexdata.com/v3/rockets")
-          .then(res => res.data);
+      async resolve(parent, args) {
+        const res = await axios
+          .get("https://api.spacexdata.com/v3/rockets");
+        return res.data;
       }
     },
     cohete: {
@@ -93,35 +112,52 @@ const RootQuery = new GraphQLObjectType({
       args: {
         id: { type: GraphQLInt }
       },
-      resolve(parent, args) {
-        return axios
-          .get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
-          .then(res => res.data);
+      async resolve(parent, args) {
+        const res = await axios
+          .get(`https://api.spacexdata.com/v3/rockets/${args.id}`);
+        return res.data;
       }
     },
     apod: {
         type: ApodType,
-        resolve(parents, args) {
-            return axios
-            .get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}&hd=true`)
-            .then(res => res.data)
-            .catch(err => console.log("Hubo un error extrayendo la imagen del dia: ", err))
+        async resolve(parents, args) {
+            try {
+            const res = await axios
+              .get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}&hd=true`);
+            return res.data;
+          }
+          catch (err) {
+            return "Hubo un error extrayendo la imagen del dia: "+err;
+          }
         }
     },
     ultimoLanzamiento: {
       type: LaunchType,
-      resolve(parent, args) {
-        return axios
-          .get(`https://api.spacexdata.com/v3/launches/latest`)
-          .then(res => res.data);
+      async resolve(parent, args) {
+        const res = await axios
+          .get(`https://api.spacexdata.com/v3/launches/latest`);
+        return res.data;
       }
     },
     proximoLanzamiento:{
       type: LaunchType,
-      resolve(parent, args) {
-        return axios
-          .get(`https://api.spacexdata.com/v3/launches/next`)
-          .then(res => res.data);
+      async resolve(parent, args) {
+        const res = await axios
+          .get(`https://api.spacexdata.com/v3/launches/next`);
+        return res.data;
+      }
+    },
+    eventosHistoricos: {
+      type:new GraphQLList(EventType),
+      async resolve (parents, args) {
+        try {
+          const res = await axios
+            .get(`https://api.spacexdata.com/v3/history?sort=event_date_utc&order=desc`);
+          return res.data
+        }
+        catch (err) {
+          return "Whoops, it seems there was an error at Graph server. Error: " + err;
+        }
       }
     }
   }

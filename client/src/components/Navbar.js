@@ -14,6 +14,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+  import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   constructor(props) {
@@ -34,12 +35,18 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar className="mb-5" color="primary" light expand="md">
-          <NavbarBrand style={{marginLeft:100}} className="" href="/">
-          <Emoji symbol="🚀"></Emoji> SpaceX React App <Emoji symbol="🚀"></Emoji>
+          <NavbarBrand style={{paddingLeft:100}} className="" href="/">
+          <Emoji symbol="🚀"></Emoji> Space React App <Emoji symbol="🚀"></Emoji>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto mr-5" navbar>
+            <NavItem>
+                <Link className="nav-link" to="/spaceX">SpaceX Missions</Link>
+              </NavItem>
+              <NavItem>
+                <Link className="nav-link" to="/Nasa">Nasa</Link>
+              </NavItem>
               <NavItem>
                 <NavLink href="https://www.raffallijoseluis.com.ve">My Page</NavLink>
               </NavItem>

@@ -14,7 +14,7 @@ import Nasa from './components/Nasa'
 import "./App.css";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: "/graphql"
 });
 
 class App extends Component {

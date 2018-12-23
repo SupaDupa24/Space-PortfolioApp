@@ -18,7 +18,7 @@ export default function LaunchItem({
                 'text-danger': !launch_success
               })}
             >
-              {mission_name}
+              {mission_name.substring(0,21)}
             </span>
           </h4>
           <p>

@@ -33,7 +33,7 @@ export default function SpaceXFeed() {
       <h3 className="text-center my-4">SpaceX Latest News</h3>
         <div className="row">            
           <div className="col-md">
-          <h4 className="text-center my-3 font-weight-bold"> <span className="text-info">Last</span>  Launch Performed</h4>
+          <h4 className="text-center my-3 font-weight-bold"> <span className="text-info">Last Launch Performed</span></h4>
             <Query query={QUERY_ULTIMO_LANZAMIENTO}>
               {({ loading, error, data }) => {
                 if (loading)
@@ -70,7 +70,7 @@ export default function SpaceXFeed() {
             </Query>
           </div>
           <div className="col-md" >
-          <h4 className="text-center my-3 font-weight-bold"> <span className="text-warning">Next</span>  Launch to Come!</h4>
+          <h4 className="text-center my-3 font-weight-bold"> <span className="text-warning">Next Launch to Come!</span></h4>
             <Query query={QUERY_PROXIMO}>
               {({ loading, error, data }) => {
                 if (loading)
