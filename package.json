@@ -10,7 +10,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "./node_modules/.bin/babel -d ./build ./app -s",
-    "build": "npm run clean && npm run build-babel"
+    "build": "npm run clean && npm run build-babel",
+    "heroku-postbuild": "npm install"
   },
   "keywords": [
     "SpaceX",
