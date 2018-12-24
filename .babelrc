@@ -3,5 +3,10 @@
       [
         "env",  { "modules": false }
       ]
+    ],
+    "ignore": [
+        "node_modules",
+        "public",
+        "client"
     ]
   }
