@@ -4,7 +4,7 @@
   "description": "Cool personal app that consumes Nasa's and SpaceX APIs to see some cool content such as rocket missions and Nasa's awesome repository of info/images. Stack: React, Apollo, Express, GraphQl",
   "main": "server.js",
   "scripts": {
-    "start": "npm install && npm run build && node ./build/server.js",
+    "start": "npm run build && node ./build/server.js",
     "server": "nodemon --exec babel-node ./app/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
