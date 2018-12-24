@@ -35,7 +35,7 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar className="mb-5" color="primary" light expand="md">
-          <NavbarBrand style={{paddingLeft:100}} className="" href="/">
+          <NavbarBrand style={{paddingLeft:10}} className="" href="/">
           <Emoji symbol="🚀"></Emoji> Space React App <Emoji symbol="🚀"></Emoji>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
