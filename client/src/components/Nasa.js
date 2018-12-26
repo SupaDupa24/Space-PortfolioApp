@@ -6,6 +6,7 @@ import {
   CarouselIndicators,
   CarouselCaption
 } from "reactstrap";
+import axios from 'axios'
 
 export class Nasa extends Component {
   constructor(props) {
@@ -16,6 +17,11 @@ export class Nasa extends Component {
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get(`https://api.unsplash.com/search/photos?query=space&client_id=1f6b0200db22c2cd781f3e176992a3493efa206febdac3647cb78095efc88629`)
+    .then(res => console.log("esta es la imagen de unsplash", res.data)).catch(err => console.log(err))
   }
 
   onExiting() {
@@ -95,10 +101,10 @@ export class Nasa extends Component {
         <div className="container my-5">
           <div className="row">
             <div className="col-lg-4">
-              <div class="card mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
+              <div className="card mb-3">
+                <h3 className="card-header">Card header</h3>
+                <div className="card-body">
+                  <h5 className="card-title">Special title treatment</h5>
                 </div>
                 <img
                   style={{ height: 200 }}
@@ -106,15 +112,15 @@ export class Nasa extends Component {
                   alt="Card image"
                 />
 
-                <div class="card-body">
-                  <p class="card-text">
+                <div className="card-body">
+                  <p className="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
-                  <a href="#" class="card-link">
+                  <a href="#" className="card-link">
                     Card link
                   </a>
-                  <a href="#" class="card-link">
+                  <a href="#" className="card-link">
                     Another link
                   </a>
                 </div>

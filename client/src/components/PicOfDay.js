@@ -55,6 +55,23 @@ const PicOfDay = props => {
               hdurl,
               explanation
             } = data.apod;
+            let acum = 0
+            let parr1 = []
+            let parr2 = []
+            if (explanation) {
+              const size = explanation.length
+              const stringArray = explanation.replace(/([.?!])\s*(?=[A-Z])/g, "$1| ").split("|")
+              stringArray.forEach(current => {
+              
+                if (acum < size/2 ) 
+                  parr1.push(current)
+                else 
+                  parr2.push(current)
+                acum += current.length
+                
+              });
+            }
+          
             if (!url.startsWith("https://www.youtube")) {
               return (
                 <Fragment>
@@ -92,7 +109,13 @@ const PicOfDay = props => {
                           <h5>Description</h5>
                           <div>
                             <p className=" text-justify text-muted">
-                              {explanation}
+                              {
+                                parr1.map(e => e)
+                              }
+                              <br/> <br/>
+                              {
+                                parr2.length != 0 ? parr2.map(e => e) :""
+                              }
                             </p>
                           </div>
                         </div>
