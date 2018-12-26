@@ -48,7 +48,7 @@ export class Launch extends Component {
                 } = data.lanzamiento;
 
                 return (
-                  <div>
+                  <div className="container">
                     <h1 className="display-4 my-3">
                       <span className="text-dark">Mission:</span> {mission_name}
                     </h1>

@@ -80,7 +80,7 @@ const PicOfDay = props => {
                             <strong>
                               <i className="fas fa-play" /> Photo by{" "}
                             </strong>{" "}
-                            : {copyright}
+                            : {copyright != null ? copyright : <i>Not Specified</i>}
                             <br />
                             <strong>
                               <i className="fas fa-compact-disc" /> Date{" "}
