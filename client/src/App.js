@@ -9,6 +9,9 @@ import Launch from './components/Launch'
 import Footer from './components/Footer'
 import SpaceX from './components/SpaceX'
 import Nasa from './components/Nasa'
+import SpaceXEvents from './components/SpaceXEvents'
+import Launches from './components/Launches'
+
 
 
 import "./App.css";
@@ -28,6 +31,8 @@ class App extends Component {
             <Route exact path="/spaceX/launch/:flight_number" component={Launch} />
             <Route exact path="/spaceX/" component={SpaceX} />
             <Route exact path="/nasa/" component={Nasa} />
+            <Route exact path="/spaceXEvents/" component={SpaceXEvents} />
+            <Route exact path="/spaceXLaunches/" component={Launches} />
             <Footer />
           </div>
         </Router>

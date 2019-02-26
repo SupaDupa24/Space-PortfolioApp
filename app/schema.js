@@ -40,6 +40,27 @@ const RocketType = new GraphQLObjectType({
   })
 });
 
+// SpaceX Events
+const EventType = new GraphQLObjectType({
+  name:"EventosHistoricos",
+  fields: () => ({
+    title: {type: GraphQLString},
+    event_date_utc: {type: GraphQLString},
+    flight_number: {type: GraphQLInt},
+    details: {type: GraphQLString},
+    links: {type: LinkType}
+  })
+})
+
+// Link short Model 
+const LinkType = new GraphQLObjectType({
+name: "ExternalLinks",
+fields:() => ({
+  article: {type: GraphQLString},
+  wikipedia: {type: GraphQLString}
+})
+})
+
 /**
  *  NASA models
  *  @description NASA objects data such as images
@@ -58,26 +79,30 @@ const ApodType = new GraphQLObjectType({
     })
 })
 
-const EventType = new GraphQLObjectType({
-    name:"EventosHistoricos",
-    fields: () => ({
-      title: {type: GraphQLString},
-      event_date_utc: {type: GraphQLString},
-      flight_number: {type: GraphQLInt},
-      details: {type: GraphQLString},
-      links: {type: LinkType}
-    })
-})
-
-const LinkType = new GraphQLObjectType({
-  name: "ExternalLinks",
-  fields:() => ({
-    article: {type: GraphQLString},
-    wikipedia: {type: GraphQLString}
+ // Rovers pictures
+ const RoverImages = new GraphQLObjectType({
+  name:"ImagenesDeRovers",
+  fields: () => ({
+      id: {type:GraphQLString},
+      sol: {type: GraphQLString},
+      img_src: {type: GraphQLString},
+      earth_date: {type: GraphQLString},
+      rover: {type:RoverType},
   })
 })
 
-// Root Query
+const RoverType = new GraphQLObjectType({
+  name:"MarsRover",
+  fields: () => ({
+      id: {type:GraphQLString},
+      name: {type: GraphQLString},
+      status: {type: GraphQLString},
+      launch_date: {type: GraphQLString},
+      landing_date: {type: GraphQLString},
+  })
+})
+
+// ---------- Root Query ----------
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
@@ -129,6 +154,19 @@ const RootQuery = new GraphQLObjectType({
           }
           catch (err) {
             return "Hubo un error extrayendo la imagen del dia: "+err;
+          }
+        }
+    },
+    curiosity: {
+        type: new GraphQLList(RoverImages),
+        async resolve(parents, args) {
+            try {
+            const res = await axios
+              .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1600&api_key=${process.env.NASA_API_KEY}`);
+            return res.data;
+          }
+          catch (err) {
+            return "Hubo un error extrayendo imagenes de curiosity: "+err;
           }
         }
     },

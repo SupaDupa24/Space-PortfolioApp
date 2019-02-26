@@ -20,8 +20,8 @@ export class SpaceX extends Component {
             </p>
           </div>
         </section>
-        <SpaceXEvents />
-        <Launches />
+        <SpaceXEvents type="Recent" />
+        <Launches type='Recent'/>
       </div>
     );
   }
