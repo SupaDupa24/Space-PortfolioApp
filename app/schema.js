@@ -162,8 +162,8 @@ const RootQuery = new GraphQLObjectType({
         async resolve(parents, args) {
             try {
             const res = await axios
-              .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1600&api_key=${process.env.NASA_API_KEY}`);
-            return res.data;
+              .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1600&api_key=${process.env.NASA_API_KEY}&page=1`);
+              return res.data.photos;
           }
           catch (err) {
             return "Hubo un error extrayendo imagenes de curiosity: "+err;

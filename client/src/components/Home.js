@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Launches from "./Launches";
 import PicOfDay from "./PicOfDay";
 import Intro from './Intro'
 import SpaceXFeed from "./SpaceXFeed";

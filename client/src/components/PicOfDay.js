@@ -52,7 +52,6 @@ const PicOfDay = props => {
               date,
               title,
               url,
-              hdurl,
               explanation
             } = data.apod;
             let acum = 0
@@ -97,7 +96,7 @@ const PicOfDay = props => {
                             <strong>
                               <i className="fas fa-play" /> Photo by{" "}
                             </strong>{" "}
-                            : {copyright != null ? copyright : <i>Not Specified</i>}
+                            : {copyright !== null ? copyright : <i>Public</i>}
                             <br />
                             <strong>
                               <i className="fas fa-compact-disc" /> Date{" "}
@@ -142,6 +141,7 @@ const PicOfDay = props => {
                         <div className="col-md">
                           <div className="embed-responsive embed-responsive-16by9 mb-2">
                             <iframe
+                            title={title}
                               className="embed-responsive-item"
                               src={url}
                               allowFullScreen

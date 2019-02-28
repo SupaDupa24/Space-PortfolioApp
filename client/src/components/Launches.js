@@ -18,9 +18,6 @@ const QUERY_LANZAMIENTOS_SPACEX = gql`
 `;
 
 export class Launches extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Fragment>

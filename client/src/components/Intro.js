@@ -20,7 +20,7 @@ export class Intro extends Component {
                   <Link to={`/spaceX`} className="btn btn-primary my-2 mx-1 ">
                     SpaceX Missions
                   </Link>
-                  <Link to={`/spaceX`} className="btn btn-secondary my-2 mx-1">
+                  <Link to={`/nasa`} className="btn btn-secondary my-2 mx-1">
                     NASA Goodies
                   </Link>
                 </p>

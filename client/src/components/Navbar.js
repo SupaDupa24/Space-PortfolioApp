@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import logo from "../spacex2.png";
-import logo2 from "../NASA.png";
 import Emoji from "./Emoji";
 import {
   Button,
@@ -65,7 +63,7 @@ class NavBar extends Component {
             <Nav className="ml-auto mr-5" navbar>
               <NavItem>
                 <Link className="nav-link" to="/spaceX">
-                  SpaceX Missions
+                  SpaceX
                 </Link>
               </NavItem>
               <NavItem>
@@ -74,12 +72,7 @@ class NavBar extends Component {
                 </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="https://www.raffallijoseluis.com.ve">
-                  My Page
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/jotaraffalli">GitHub</NavLink>
+                <NavLink href="https://github.com/JotaRaffalli/Space-PortfolioApp">Source</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -145,7 +138,7 @@ class NavBar extends Component {
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle2}>Got it!</Button>
-            <a href="https://github.com/jotaraffalli" className="btn btn-primary"  onClick={this.toggle2}>My GitHub</a>
+            <a href="https://github.com/JotaRaffalli/Space-PortfolioApp" className="btn btn-primary"  onClick={this.toggle2}>My GitHub</a>
           </ModalFooter>
         </Modal>
       </div>
