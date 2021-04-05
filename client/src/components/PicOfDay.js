@@ -113,7 +113,7 @@ const PicOfDay = props => {
                               }
                               <br/> <br/>
                               {
-                                parr2.length != 0 ? parr2.map(e => e) :""
+                                parr2.length !== 0 ? parr2.map(e => e) :""
                               }
                             </p>
                           </div>
